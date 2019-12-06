@@ -30,6 +30,7 @@ For this particular scenario we need a key called `demonym`.
 
 1. Create a class `DemonymSuggestMode` in `SuggestModes` directory extending `CountrySuggestMode`.
 2. Play around with `countries()` helper using `php please tinker` to get the data you need. I came up with this:
+
     ```php
     collect(countries(true))
         ->pluck('demonym')
@@ -37,6 +38,7 @@ For this particular scenario we need a key called `demonym`.
         ->values()
         ->all();
     ```
+   
     For this case I'm calling `countries(true)` to get a bigger data set which includes a demonym for each country.
     I'm wrapping it inside `collect()` to turn the array into a [Laravel Collection](https://laravel.com/docs/5.1/collections)
     to get many convenience methods it provides. Then I'm picking (plucking) a `demonym` key from each country record and filter the collection
@@ -46,6 +48,7 @@ For this particular scenario we need a key called `demonym`.
 4. Wrap the array you got in step 2 in `$this->map()` call. This will make sure you data will be formatted in a way that Statamic expects.
 If you have a simple array, both values and text labels will be the same. But if you want to have different values simply make an assosiative array.
 5. Finally, use your suggest mode in a fieldset with a suggest field:
+
     ```yaml
     fields:
       country:
@@ -54,4 +57,3 @@ If you have a simple array, both values and text labels will be the same. But if
         mode: geo-suggestions.demonym
     ```
 
- 
