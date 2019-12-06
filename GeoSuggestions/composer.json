@@ -1,0 +1,6 @@
+{
+  "name": "rcknr/statamic-geo-suggestions",
+  "require": {
+    "rinvex/countries": "^6.0"
+  }
+}
